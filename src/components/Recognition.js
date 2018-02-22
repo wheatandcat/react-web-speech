@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Connected from "./Icon/Connected"
 
 export default class extends Component {
   state = {
@@ -80,7 +81,7 @@ export default class extends Component {
 
     return (
       <div>
-        <input type="button" onClick={this.onRecognition} value="録音開始" />
+        <Connected status={this.state.status} />
       </div>
     )
   }
