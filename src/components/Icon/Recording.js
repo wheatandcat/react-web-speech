@@ -24,10 +24,10 @@ const Recording = styled.div`
   &::before {
     content: "";
     position: absolute;
-    top: 0.1em;
-    left: 0.1em;
-    width: 1.2em;
-    height: 1.2em;
+    top: 0.2em;
+    left: 0.2em;
+    width: 1em;
+    height: 1em;
     background-color: #ff662b;
     border-radius: 100%;
   }

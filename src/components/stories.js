@@ -13,6 +13,6 @@ storiesOf("web search", module)
       endWord="終了"
       onValues={action("onValues")}
       onChangeStatus={action("onChangeStatus")}
-      onChangeValue={action("onChangeValue")}
+      onAddText={action("onAddText")}
     />
   ))

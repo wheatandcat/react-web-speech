@@ -37,13 +37,15 @@ export default class extends Component {
         await this.setState({
           values,
         })
-
-        await this.props.onChangeValue(values)
       } else if (this.state.status === "DOING" && text === this.props.endWord) {
         await this.setState({
           status: "END",
         })
         await this.props.onChangeStatus("END")
+      }
+
+      if (this.state.status !== "INIT") {
+        this.props.onAddText(text)
       }
     })
 
