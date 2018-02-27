@@ -3,8 +3,9 @@ import { storiesOf } from "@storybook/react"
 import { withKnobs, boolean, number } from "@storybook/addon-knobs"
 import { action } from "@storybook/addon-actions"
 import Recognition from "./Recognition"
+import Speak from "./Speak"
 
-storiesOf("web search", module)
+storiesOf("Web search", module)
   .addDecorator(withKnobs)
   .add("Recognition", () => (
     <Recognition
@@ -14,5 +15,13 @@ storiesOf("web search", module)
       onValues={action("onValues")}
       onChangeStatus={action("onChangeStatus")}
       onAddText={action("onAddText")}
+    />
+  ))
+  .add("Speak", () => (
+    <Speak
+      values={["hello", "world"]}
+      onEnd={action("onEnd")}
+      onChange={action("onChange")}
+      silenceTime={100}
     />
   ))

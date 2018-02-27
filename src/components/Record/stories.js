@@ -7,7 +7,7 @@ import Start from "./Start"
 import Stop from "./Stop"
 import Connected from "./Connected"
 
-storiesOf("Icon", module)
+storiesOf("Record", module)
   .addDecorator(withKnobs)
   .add("Connected", () => <Connected />)
   .add("Recording", () => <Recording />)

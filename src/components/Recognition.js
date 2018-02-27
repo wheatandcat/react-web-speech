@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Connected from "./Icon/Connected"
+import Connected from "./Record/Connected"
 
 export default class extends Component {
   state = {
