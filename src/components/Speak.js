@@ -9,8 +9,9 @@ export default class extends Component {
 
   static defaultProps = {
     values: [],
-    lang: "en-US",
     silenceTime: 100,
+    rate: 1.0,
+    volume: 1.0,
   }
 
   async componentDidMount() {
@@ -30,20 +31,27 @@ export default class extends Component {
       await this.setState({
         status: "INIT",
       })
+      this.props.onChangeStatus("INIT")
       return
     }
-    await this.setState({
-      status: "DOING",
-    })
 
-    const text = await this.props.values[index]
+    if (this.state.status === "INIT") {
+      await this.setState({
+        status: "DOING",
+      })
+      this.props.onChangeStatus("DOING")
+    }
 
-    this.state.synthesisUtterance.text = await text
-    this.state.synthesisUtterance.lang = await this.props.lang
+    const value = await this.props.values[index]
+
+    this.state.synthesisUtterance.text = value.text
+    this.state.synthesisUtterance.lang = value.lang
+    this.state.synthesisUtterance.rate = this.props.rate
+    this.state.synthesisUtterance.volume = this.props.volume
 
     await speechSynthesis.speak(this.state.synthesisUtterance)
 
-    await this.onChange(text)
+    await this.onChange(index, value)
 
     this.state.synthesisUtterance.onend = () => {
       setTimeout(() => {
@@ -52,8 +60,8 @@ export default class extends Component {
     }
   }
 
-  onChange = value => {
-    this.props.onChange(value)
+  onChange = (index, value) => {
+    this.props.onChange(index, value)
   }
 
   render() {

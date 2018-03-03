@@ -19,9 +19,19 @@ storiesOf("Web search", module)
   ))
   .add("Speak", () => (
     <Speak
-      values={["hello", "world"]}
+      values={[
+        {
+          lang: "en-US",
+          text: "hello",
+        },
+        {
+          lang: "en-US",
+          text: "world",
+        },
+      ]}
       onEnd={action("onEnd")}
       onChange={action("onChange")}
+      onChangeStatus={action("onChange")}
       silenceTime={100}
     />
   ))

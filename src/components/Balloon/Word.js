@@ -6,25 +6,67 @@ const Balloon = styled.div`
   position: relative;
   margin: 20px;
   padding: 20px;
-  background: #666;
+  background: #fff;
+  border: 1px solid #666;
   border-radius: 30px;
-  color: #fff;
   min-width: 10rem;
   man-width: 50rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 40px;
+    width: 0;
+    height: 0;
+    border-top: 30px solid #666;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    transform-origin: left top;
+    transform: skewX(-40deg);
+  }
 
   &::after {
     content: "";
     position: absolute;
-    margin: 0;
-    bottom: -30px;
-    left: 30px;
+    bottom: -26px;
+    left: 43px;
     width: 0;
     height: 0;
-    border-top: 40px solid #666;
+    border-top: 30px solid #fff;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
-    transform: rotate(30deg);
+    transform-origin: left top;
+    transform: skewX(-40deg);
+  }
+
+  span {
+    padding: 0.25rem 0.5rem;
   }
 `
 
-export default ({ children }) => <Balloon>{children}</Balloon>
+const Highlight = styled.div`
+  font-weight: 700;
+
+  span {
+    background: #aacbf0 !important;
+  }
+`
+
+export default ({ children, highlight }) => {
+  if (highlight) {
+    return (
+      <Highlight>
+        <Balloon>
+          <span>{children}</span>
+        </Balloon>
+      </Highlight>
+    )
+  }
+
+  return (
+    <Balloon>
+      <span>{children}</span>
+    </Balloon>
+  )
+}

@@ -6,39 +6,62 @@ const Translate = styled.div`
   position: relative;
   margin: 20px;
   padding: 20px;
-  background: #fff;
-  border: 1px solid #666;
+  background: #666;
   border-radius: 30px;
+  color: #fff;
   min-width: 10rem;
   man-width: 50rem;
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: -30px;
-    left: 40px;
-    width: 0;
-    height: 0;
-    border-top: 30px solid #666;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    transform-origin: left top;
-    transform: skewX(-40deg);
-  }
 
   &::after {
     content: "";
     position: absolute;
-    bottom: -26px;
-    left: 43px;
+    margin: 0;
+    bottom: -30px;
+    left: 30px;
     width: 0;
     height: 0;
-    border-top: 30px solid #fff;
+    border-top: 40px solid #666;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
-    transform-origin: left top;
-    transform: skewX(-40deg);
+    transform: rotate(30deg);
+  }
+
+  span {
+    padding: 0.25rem 0.5rem;
   }
 `
 
-export default ({ children }) => <Translate>{children}</Translate>
+const Highlight = styled.div`
+  font-weight: 700;
+
+  > div {
+    color: #000 !important;
+    background: #999 !important;
+
+    &::after {
+      border-top: 40px solid #999 !important;
+    }
+
+    > span {
+      background: #aacbf0 !important;
+    }
+  }
+`
+
+export default ({ children, highlight }) => {
+  if (highlight) {
+    return (
+      <Highlight>
+        <Translate>
+          <span>{children}</span>
+        </Translate>
+      </Highlight>
+    )
+  }
+
+  return (
+    <Translate>
+      <span>{children} </span>
+    </Translate>
+  )
+}

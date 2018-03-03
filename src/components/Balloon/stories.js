@@ -7,5 +7,9 @@ import Translate from "./Translate"
 
 storiesOf("Balloon", module)
   .addDecorator(withKnobs)
-  .add("Word", () => <Word>こんにちは</Word>)
-  .add("Translate", () => <Translate>Hello</Translate>)
+  .add("Word", () => (
+    <Word highlight={boolean("highlight", false)}>こんにちは</Word>
+  ))
+  .add("Translate", () => (
+    <Translate highlight={boolean("highlight", false)}>Hello</Translate>
+  ))
