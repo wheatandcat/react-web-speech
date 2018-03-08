@@ -29,9 +29,9 @@ export default class extends Component {
     if (!this.props.values[index]) {
       await this.props.onEnd()
       await this.setState({
-        status: "INIT",
+        status: "END",
       })
-      this.props.onChangeStatus("INIT")
+      this.props.onChangeStatus("END")
       return
     }
 
@@ -69,7 +69,7 @@ export default class extends Component {
       return null
     }
 
-    if (this.state.status !== "INIT") {
+    if (this.state.status === "DOING") {
       return <Connected status={this.state.status} />
     }
 

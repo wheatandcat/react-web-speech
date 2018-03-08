@@ -23,8 +23,6 @@ const Side = styled.div`
 `
 const ActionZone = styled.div`
   position: fixed;
-  padding-top 8rem;
-  padding-left 2rem;
 `
 
 export default ({
@@ -33,6 +31,8 @@ export default ({
   speaks,
   rate,
   speakindex,
+  speakText,
+  marginBottom,
   onChangeSpeechText,
   onChangeStatus,
 }) => (
@@ -49,17 +49,32 @@ export default ({
         />
       </ActionZone>
     </Side>
-    <Grid>
-      {words.map((word, index) => (
-        <Fragment key={index}>
-          <Item row={index + 1} col={1} highlight={index === speakindex}>
-            <Word>{words[index].text}</Word>
-          </Item>
-          <Item row={index + 1} col={2} highlight={index === speakindex}>
-            <Translate>{translates[index].text}</Translate>
-          </Item>
-        </Fragment>
-      ))}
-    </Grid>
+    <div>
+      <Grid>
+        {words.map((word, index) => (
+          <Fragment key={index}>
+            <Item row={index + 1} col={1} highlight={index === speakindex}>
+              <Word
+                highlight={
+                  index === speakindex && speakText === words[index].text
+                }
+              >
+                {words[index].text}
+              </Word>
+            </Item>
+            <Item row={index + 1} col={2} highlight={index === speakindex}>
+              <Translate
+                highlight={
+                  index === speakindex && speakText === translates[index].text
+                }
+              >
+                {translates[index].text}
+              </Translate>
+            </Item>
+          </Fragment>
+        ))}
+      </Grid>
+      <div style={{ marginBottom }} />
+    </div>
   </Root>
 )

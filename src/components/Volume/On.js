@@ -2,11 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 const Volume = styled.div`
+  top: 1.25rem;
+  left: 0.5rem;
   font-size: 50px;
   position: relative;
   width: 0.4em;
   height: 0.4em;
   background-color: #39a9d6;
+  cursor: pointer;
 
   &::before {
     content: "";

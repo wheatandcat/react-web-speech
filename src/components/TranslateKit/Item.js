@@ -21,6 +21,7 @@ export default ({ children, row, col, highlight }) => {
           gridRow: row,
           gridColumn: col,
         }}
+        id={`item-row-${row}-col-${col}`}
       >
         {children}
       </Highlight>
@@ -33,6 +34,7 @@ export default ({ children, row, col, highlight }) => {
         gridRow: row,
         gridColumn: col,
       }}
+      id={`item-row-${row}-col-${col}`}
     >
       {children}
     </Root>

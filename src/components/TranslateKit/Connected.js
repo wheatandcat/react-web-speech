@@ -7,6 +7,7 @@ export default class extends Component {
     speaks: null,
     speakText: "",
     speakindex: 0,
+    marginBottom: 0,
   }
 
   static defaultProps = {
@@ -18,6 +19,16 @@ export default class extends Component {
 
   async componentDidMount() {
     this.mixSpeaks()
+
+    this.setState({
+      marginBottom: window.innerHeight,
+    })
+
+    window.addEventListener("resize", () => {
+      this.setState({
+        marginBottom: window.innerHeight,
+      })
+    })
   }
 
   mixSpeaks = async () => {
@@ -35,13 +46,22 @@ export default class extends Component {
     })
   }
 
-  onChangeSpeechText = async (index, text) => {
-    await this.setState({
-      speakindex: index,
-      speakText: text,
-    })
-  }
+  onChangeSpeechText = async (index, word) => {
+    const speakindex = Math.floor(index / 2)
 
+    await this.setState({
+      speakindex,
+      speakText: word.text,
+    })
+
+    if (index % 2 === 1) {
+      return
+    }
+
+    document
+      .getElementById(`item-row-${speakindex + 1}-col-1`)
+      .scrollIntoView(true)
+  }
   onChangeStatus = async status => {
     await this.setState({
       speech: status === "DOING",
@@ -52,8 +72,6 @@ export default class extends Component {
       return null
     }
 
-    const speakindex = Math.floor(this.state.speakindex / 2)
-
     return (
       <Kit
         words={this.props.words}
@@ -62,7 +80,8 @@ export default class extends Component {
         onChangeSpeechText={this.onChangeSpeechText}
         onChangeStatus={this.onChangeStatus}
         speakText={this.state.speakText}
-        speakindex={this.state.speech ? speakindex : null}
+        speakindex={this.state.speech ? this.state.speakindex : null}
+        marginBottom={this.state.marginBottom}
       />
     )
   }

@@ -44,7 +44,7 @@ const words = [
   },
   {
     lang: "ja",
-    text: "今はreactにハマっています",
+    text: "今はreactに、ハマっています",
   },
   {
     lang: "ja",
@@ -140,7 +140,4 @@ const translates = [
 
 storiesOf("TranslateKit", module)
   .addDecorator(withKnobs)
-  .add("Kit", () => (
-    <Kit words={words} translates={translates} speaks={translates} />
-  ))
   .add("Connected", () => <Connected words={words} translates={translates} />)
