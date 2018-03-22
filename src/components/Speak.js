@@ -35,7 +35,7 @@ export default class extends Component {
       return
     }
 
-    if (this.state.status === "INIT") {
+    if (this.state.status !== "DOING") {
       await this.setState({
         status: "DOING",
       })

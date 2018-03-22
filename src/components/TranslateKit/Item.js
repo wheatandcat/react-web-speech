@@ -4,6 +4,8 @@ import styled from "styled-components"
 const Root = styled.div`
   min-width: 30rem;
   max-width: 60rem;
+  padding-bottom: 1rem;
+  border-bottom: medium solid #fff;
 `
 
 const Highlight = styled.div`

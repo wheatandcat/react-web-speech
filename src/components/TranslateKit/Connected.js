@@ -59,7 +59,9 @@ export default class extends Component {
     }
 
     document
-      .getElementById(`item-row-${speakindex + 1}-col-1`)
+      .getElementById(
+        `item-row-${speakindex > 0 ? speakindex : speakindex + 1}-col-1`
+      )
       .scrollIntoView(true)
   }
   onChangeStatus = async status => {

@@ -32,8 +32,6 @@ const Translate = styled.div`
 `
 
 const Highlight = styled.div`
-  font-weight: 700;
-
   > div {
     color: #000 !important;
     background: #999 !important;

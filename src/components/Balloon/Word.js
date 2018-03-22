@@ -46,8 +46,6 @@ const Balloon = styled.div`
 `
 
 const Highlight = styled.div`
-  font-weight: 700;
-
   span {
     background: #aacbf0 !important;
   }
